@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://robinzzs.gitee.io</id>
+    <id>https://robinzzs.github.io</id>
     <title>Robin&apos;s Blog</title>
-    <updated>2020-07-11T00:49:57.807Z</updated>
+    <updated>2020-07-11T01:15:05.172Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://robinzzs.gitee.io"/>
-    <link rel="self" href="https://robinzzs.gitee.io/atom.xml"/>
+    <link rel="alternate" href="https://robinzzs.github.io"/>
+    <link rel="self" href="https://robinzzs.github.io/atom.xml"/>
     <subtitle>Stay hungry stay foolish</subtitle>
-    <logo>https://robinzzs.gitee.io/images/avatar.png</logo>
-    <icon>https://robinzzs.gitee.io/favicon.ico</icon>
+    <logo>https://robinzzs.github.io/images/avatar.png</logo>
+    <icon>https://robinzzs.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Robin&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[Github 中高效搜索项目]]></title>
-        <id>https://robinzzs.gitee.io/post/github-zhong-gao-xiao-sou-suo-xiang-mu/</id>
-        <link href="https://robinzzs.gitee.io/post/github-zhong-gao-xiao-sou-suo-xiang-mu/">
+        <id>https://robinzzs.github.io/post/github-zhong-gao-xiao-sou-suo-xiang-mu/</id>
+        <link href="https://robinzzs.github.io/post/github-zhong-gao-xiao-sou-suo-xiang-mu/">
         </link>
         <updated>2020-07-07T04:18:23.000Z</updated>
         <content type="html"><![CDATA[<p>在github中搜索项目中常用的<em>搜索参数关键字</em></p>
@@ -52,8 +52,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Linux 下类似Mac中dash的文档管理器]]></title>
-        <id>https://robinzzs.gitee.io/post/linux-xia-lei-si-mac-zhong-dash-de-wen-dang-guan-li-qi/</id>
-        <link href="https://robinzzs.gitee.io/post/linux-xia-lei-si-mac-zhong-dash-de-wen-dang-guan-li-qi/">
+        <id>https://robinzzs.github.io/post/linux-xia-lei-si-mac-zhong-dash-de-wen-dang-guan-li-qi/</id>
+        <link href="https://robinzzs.github.io/post/linux-xia-lei-si-mac-zhong-dash-de-wen-dang-guan-li-qi/">
         </link>
         <updated>2020-07-04T03:14:44.000Z</updated>
         <content type="html"><![CDATA[<h1 id="zeal">Zeal</h1>
@@ -61,8 +61,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[提高github项目下载速度]]></title>
-        <id>https://robinzzs.gitee.io/post/ti-gao-github-xiang-mu-xia-zai-su-du/</id>
-        <link href="https://robinzzs.gitee.io/post/ti-gao-github-xiang-mu-xia-zai-su-du/">
+        <id>https://robinzzs.github.io/post/ti-gao-github-xiang-mu-xia-zai-su-du/</id>
+        <link href="https://robinzzs.github.io/post/ti-gao-github-xiang-mu-xia-zai-su-du/">
         </link>
         <updated>2020-07-02T07:57:07.000Z</updated>
         <content type="html"><![CDATA[<h1 id="使用码云">使用码云</h1>
@@ -75,18 +75,9 @@ jsdeliver</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[文章精读打卡]]></title>
-        <id>https://robinzzs.gitee.io/post/wen-zhang-jing-du-da-qia/</id>
-        <link href="https://robinzzs.gitee.io/post/wen-zhang-jing-du-da-qia/">
-        </link>
-        <updated>2020-06-26T09:38:53.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="20200626">2020.06.26</h2>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[geo software]]></title>
-        <id>https://robinzzs.gitee.io/post/geo-software/</id>
-        <link href="https://robinzzs.gitee.io/post/geo-software/">
+        <id>https://robinzzs.github.io/post/geo-software/</id>
+        <link href="https://robinzzs.github.io/post/geo-software/">
         </link>
         <updated>2020-06-23T13:18:09.000Z</updated>
         <content type="html"><![CDATA[<p>SEIZMO<br>
@@ -120,8 +111,8 @@ fatiando</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Latex编辑器]]></title>
-        <id>https://robinzzs.gitee.io/post/latex-bian-ji-qi/</id>
-        <link href="https://robinzzs.gitee.io/post/latex-bian-ji-qi/">
+        <id>https://robinzzs.github.io/post/latex-bian-ji-qi/</id>
+        <link href="https://robinzzs.github.io/post/latex-bian-ji-qi/">
         </link>
         <updated>2020-06-22T06:02:30.000Z</updated>
         <content type="html"><![CDATA[<h1 id="marktext">marktext</h1>
@@ -132,8 +123,8 @@ fatiando</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Madagascar模块解析——sfbin]]></title>
-        <id>https://robinzzs.gitee.io/post/sfbin-han-shu-jie-xi/</id>
-        <link href="https://robinzzs.gitee.io/post/sfbin-han-shu-jie-xi/">
+        <id>https://robinzzs.github.io/post/sfbin-han-shu-jie-xi/</id>
+        <link href="https://robinzzs.github.io/post/sfbin-han-shu-jie-xi/">
         </link>
         <updated>2020-06-05T06:04:42.000Z</updated>
         <content type="html"><![CDATA[<p>将原始的采集数据放入设定好的规则化网格中，对数据有插值、规则化等操作</p>
@@ -207,8 +198,8 @@ mm = sf_floatalloc(nm); // fold数组
     </entry>
     <entry>
         <title type="html"><![CDATA[Pytorch学习——简单RNN网络]]></title>
-        <id>https://robinzzs.gitee.io/post/ji-yu-pytorch-de-jian-dan-rnn-wang-luo/</id>
-        <link href="https://robinzzs.gitee.io/post/ji-yu-pytorch-de-jian-dan-rnn-wang-luo/">
+        <id>https://robinzzs.github.io/post/ji-yu-pytorch-de-jian-dan-rnn-wang-luo/</id>
+        <link href="https://robinzzs.github.io/post/ji-yu-pytorch-de-jian-dan-rnn-wang-luo/">
         </link>
         <updated>2020-06-02T07:01:54.000Z</updated>
         <content type="html"><![CDATA[<h1 id="preknowledge">Preknowledge</h1>
@@ -410,8 +401,8 @@ Epoch:1000, Loss:0.52481
     </entry>
     <entry>
         <title type="html"><![CDATA[Madagascar模块解析——sfintbin]]></title>
-        <id>https://robinzzs.gitee.io/post/sfintbin-jie-xi/</id>
-        <link href="https://robinzzs.gitee.io/post/sfintbin-jie-xi/">
+        <id>https://robinzzs.github.io/post/sfintbin-jie-xi/</id>
+        <link href="https://robinzzs.github.io/post/sfintbin-jie-xi/">
         </link>
         <updated>2020-06-01T10:27:44.000Z</updated>
         <content type="html"><![CDATA[<p>将原始的采集数据自动放入规则化网格中</p>
@@ -483,8 +474,8 @@ for (iy=0; iy &lt; ny; iy++) {
     </entry>
     <entry>
         <title type="html"><![CDATA[Grammar Checker in Doom Emacs语法检查]]></title>
-        <id>https://robinzzs.gitee.io/post/grammar-checker-in-doom-emacs/</id>
-        <link href="https://robinzzs.gitee.io/post/grammar-checker-in-doom-emacs/">
+        <id>https://robinzzs.github.io/post/grammar-checker-in-doom-emacs/</id>
+        <link href="https://robinzzs.github.io/post/grammar-checker-in-doom-emacs/">
         </link>
         <updated>2020-05-26T08:06:13.000Z</updated>
         <content type="html"><![CDATA[<p><em>Spell Checker只能检查单词拼写错误，使用Grammar Checker后可以进行一些语法检查，甚至能在文章里减少一些口水话</em></p>
@@ -522,6 +513,30 @@ M-x langtool-correct-buffer   #对当前buffer中的错误进行更正
 <p>之后出现语法错误的部分会在文中高亮显示</p>
 <p>Ps:<br>
 M对应Emacs的Meta键，对应“Alt”键。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Homebrew使用过程中“Connection refused”域名污染问题]]></title>
+        <id>https://robinzzs.github.io/post/homebrew-shi-yong-guo-cheng-zhong-yu-ming-wu-ran-wen-ti/</id>
+        <link href="https://robinzzs.github.io/post/homebrew-shi-yong-guo-cheng-zhong-yu-ming-wu-ran-wen-ti/">
+        </link>
+        <updated>2020-05-25T03:51:32.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="一些包在安装的时候出现如下的情况">一些包在安装的时候出现如下的情况</h1>
+<pre><code class="language-shell">curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused
+</code></pre>
+<p>由于一些<em>你懂的</em>因素，导致github的raw.githubusercontent.com域名解析被污染，当brew调用相应命令从github下载一些包的时候可能就会出现上述情况（或者有时候使用git命令下载的时候也可能出现相应的<em>Connection refused</em>的情况）。</p>
+<ul>
+<li>解决办法</li>
+</ul>
+<p>修改hosts文件，直接定向raw.githubusercontent.com 到对应IP</p>
+<pre><code class="language-shell">sudo vim /etc/hosts
+199.232.28.133 raw.githubusercontent.com  #添加内容
+</code></pre>
+<ul>
+<li>类似问题解决思路</li>
+</ul>
+<p>通过相应网址<a href="http://www.ipaddress.com/">http://www.ipaddress.com/</a>查询对应网址的真实IP，<br>
+然后再hosts 文件中直接定向对应网址的IP。</p>
 ]]></content>
     </entry>
 </feed>
