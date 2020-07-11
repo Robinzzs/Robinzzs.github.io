@@ -1,0 +1,217 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Madagascar模块解析——sfbin | Robin&#39;s Blog</title>
+<link rel="shortcut icon" href="https://robinzzs.gitee.io/favicon.ico?v=1594428179811">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://robinzzs.gitee.io/styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Robin&#39;s Blog
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Madagascar模块解析——sfbin
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-06-05 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>将原始的采集数据放入设定好的规则化网格中，对数据有插值、规则化等操作</p>
+<h1 id="input-sources">Input sources</h1>
+<ul>
+<li>rsf格式的数据文件（二维数据，时间采样数*数据道数）</li>
+<li>rsf格式的trace header道头文件（二维数据，关键字总数*数据道数）</li>
+</ul>
+<h1 id="output-sources">Output sources</h1>
+<ul>
+<li>规则网格数据体（三维数据，时间采样数*空间X采样数*空间Y采样数）</li>
+<li>可选fold输出int型数据文件，为各数据道在空间XY上的分布信息。若网格间距较大，则在同一个网格点上可以叠加有几道数据（有数据的道为显示叠加的数据道数，空道上为0）</li>
+</ul>
+<h1 id="parameters">Parameters</h1>
+<ul>
+<li>clip 设置fold 的规则化数值，即对应网格点的fold值大于clip值，才会输出相应数据道。</li>
+<li>interp控制多道数据在同一个网格上时的插值算法</li>
+<li>norm控制是否对数据道进行规则化</li>
+<li>dx/dy和nx/ny 网格XY平面的网格大小，以及网格数量</li>
+<li>xk/xkey 控制从道头文件中读取相应关键字的数据，并形成规则网格的X轴</li>
+<li>yk/ykey 控制从道头文件中读取相应关键字的数据，并形成规则网格的Y轴</li>
+<li>xmin(x0)/xmax 控制网格X轴的最大最小值</li>
+<li>ymin(y0)/ymax 控制网格Y轴的最大最小值</li>
+</ul>
+<h1 id="processing-flow">Processing flow</h1>
+<ul>
+<li>初始化并定义基本输入输出文件，根据数据大小设置坐标系</li>
+<li>初始化道头文件指针与存储空间，判断道头文件大小与数据是否匹配，读入道头数据</li>
+<li>遍历所有数据道，并读取相应关键字对应的数据，同时确定出网格上X/Y方向的xmin/xmax和ymin/ymax</li>
+<li>读取用户设置的xmin/xmax和ymin/ymax参数，并与上一步确定出的数值进行比对，得到最终的网格大小设置</li>
+<li>配置网格大小、采样点数已经采样间隔</li>
+<li>初始化interp、norm、clip参数，以及fold文件输出</li>
+<li>数据道插值参数初始化</li>
+<li>计算各网格点count数值得到fold数组，对比count和clip数值计算规则化参数</li>
+<li>循环遍历各时间切片，进行对网格点数据作插值和规则化操作，并输出到文件</li>
+</ul>
+<h1 id="grid">Grid</h1>
+<ul>
+<li>确定网格大小</li>
+</ul>
+<pre><code class="language-c">if (!sf_getint (&quot;nx&quot;,&amp;nx)) nx = (int) (xmax - xmin + 1.);
+if (!sf_getint (&quot;ny&quot;,&amp;ny)) ny = (int) (ymax - ymin + 1.);
+/* 若不给定nx和ny的数值，则自动计算nx和ny，网格间隔为1 */
+
+nm = nx*ny; // 网格大小
+mm = sf_floatalloc(nm); // fold数组
+</code></pre>
+<ul>
+<li>count各网格点上的数据道数，确定插值操作和规则化操作</li>
+<li>sfi_int_init() 为2D插值初始化需要的变量以及存储空间</li>
+</ul>
+<pre><code class="language-c">void  sf_int2_init (float** coord,            /* 二维的坐标数组 [nd][2] */
+                         float o1, float o2, 
+                         float d1, float d2,
+                         int   n1, int   n2,         /* 数轴信息 */
+                         sf_interpolator interp, /* 插值函数 */
+                         int nf_in,                   /* 插值算子的长度 */
+                         int nd_in                   /* 数据点数 */);
+</code></pre>
+<ul>
+<li>sf_int2_lop()应用线性算子进行2D插值</li>
+</ul>
+<pre><code class="language-c">sf_int2_lop (adj,  /* 确定输出是x或是ord */
+                 add, /* 确定输入是否被初始化为0 */
+                 nm, /* x(int)的大小 */
+                 ny, /* ord(int)的大小 */
+                 x,   /* 输出或算子 */
+                 ord /* 输出或算子 */);
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://robinzzs.gitee.io/post/ji-yu-pytorch-de-jian-dan-rnn-wang-luo/" class="post-title gt-a-link">
+                    Pytorch学习——简单RNN网络
+                </a>
+            </div>
+        
+
+        
+		
+		
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">Stay hungry stay foolish</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://robinzzs.gitee.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Madagascar 安装之坑 | Robin&#39;s Blog</title>
+<link rel="shortcut icon" href="https://robinzzs.gitee.io/favicon.ico?v=1594428179811">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://robinzzs.gitee.io/styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Robin&#39;s Blog
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Madagascar 安装之坑
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-05-13 ·
+                    </time>
+                    
+                        <a href="https://robinzzs.gitee.io/tag/mdsbwjHT3/" class="post-tags">
+                            # MacOS
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="open-mpi报错">open-mpi报错</h1>
+<ul>
+<li>详细</li>
+</ul>
+<pre><code class="language-shell">/usr/local/bin/mpicc -o build/user/cwp/Mbigmpiencode.o -c -O2 -fopenmp -Ibuild/include -Ibuild/include build/user/cwp/Mbigmpiencode.c
+clang: error: unsupported option '-fopenmp'
+scons: *** [build/user/cwp/Mbigmpiencode.o] Error 1
+scons: building terminated because of errors.
+</code></pre>
+<ul>
+<li>解决方法</li>
+</ul>
+<p>先备份相关文件</p>
+<pre><code class="language-shell">cp /usr/local/Cellar/open-mpi/4.0.0/share/openmpi/mpicc-wrapper-data.txt /usr/local/Cellar/open-mpi/4.0.0/share/openmpi/mpicc-wrapper-data.txt.bak
+</code></pre>
+<pre><code class="language-shell">cp /usr/local/Cellar/open-mpi/4.0.0/share/openmpi/mpic++-wrapper-data.txt /usr/local/Cellar/open-mpi/4.0.0/share/openmpi/mpic++-wrapper-data.txt.bak
+</code></pre>
+<p>在mpicc-wrapper-data.txt 中修改</p>
+<pre><code class="language-shell">compiler=/usr/local/opt/llvm/bin/clang
+</code></pre>
+<p>在mpic++-wrapper-data.txt中修改</p>
+<pre><code class="language-shell">compiler=/usr/local/opt/llvm/bin/clang++
+</code></pre>
+<h1 id="macos-1013-安装最新commandlines之后报错">Macos 10.13 安装最新Commandlines之后报错</h1>
+<ul>
+<li>详细</li>
+</ul>
+<pre><code class="language-shell">/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libQuadrature.dylib are out of sync. 
+Falling back to library file for linking.
+</code></pre>
+<ul>
+<li>解决方法</li>
+</ul>
+<p>在<a href="https://developer.apple.com/download/more/">苹果开发者官网</a><br>
+下载并安装 Command Line Tools(macOS 10.13) for Xcode 9.4.1</p>
+<h1 id="matlab-接口需要安装xcode支持编译">Matlab 接口需要安装Xcode支持编译</h1>
+<p>对应下载 Xcode 9.4.1.xip<br>
+双击解压后，拷贝到/Application目录<br>
+在命令行运行</p>
+<pre><code class="language-shell">sudo xcode-select --switch /Applications/Xcode.app
+</code></pre>
+<p>需要启动一次Xcode，同意相关协议后才可调用。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://robinzzs.gitee.io/post/mac-she-zhi/" class="post-title gt-a-link">
+                    Mac设置
+                </a>
+            </div>
+        
+
+        
+		
+		
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">Stay hungry stay foolish</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://robinzzs.gitee.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
