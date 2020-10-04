@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Geo Software | Robin&#39;s Blog</title>
+<title>Linux/Mac下使用U盘制作安装镜像 | Robin&#39;s Blog</title>
 <link rel="shortcut icon" href="https://robinzzs.github.io/favicon.ico?v=1601800532007">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://robinzzs.github.io/styles/main.css">
@@ -87,46 +87,58 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Geo Software
+                    Linux/Mac下使用U盘制作安装镜像
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-06-23 ·
+                        · 2020-07-11 ·
                     </time>
-                    
-                        <a href="https://robinzzs.github.io/tag/opHOJ7Frk/" class="post-tags">
-                            # Geophysic
-                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <p>SEIZMO<br>
-SAC<br>
-SEISAN<br>
-GISMO<br>
-RSEIS<br>
-CORAL<br>
-SPLITLAB<br>
-SeismicHandler<br>
-TTBOX &amp; LOCSMITH<br>
-M_MAP<br>
-MATTAUP<br>
-SHTOOLS<br>
-STK<br>
-SEISLAB<br>
-MATSEIS<br>
-SEISMON<br>
-SPICE Software<br>
-CIG Software<br>
-IRIS Software<br>
-PASSCAL Software<br>
-USC Software<br>
-TauP<br>
-MADAGASCAR<br>
-SEISMIC UNIX<br>
-SACLAB<br>
-MacSAC<br>
-fatiando</p>
+                    <h1 id="linux">Linux</h1>
+<pre><code class="language-shell"># 查看挂载的设备
+fdisk -l
+# 弹出u盘，以/dev/sdc为挂载的u盘为例
+umount /dev/sdc
+# 格式化u盘为FAT32格式
+mkfs.fat /dev/sdc
+# 将iso数据写入u盘，sync指令会将存于 buffer 中的资料强制写入u盘中
+sudo dd if=xxx.iso of=/dev/sdc bs=4M; sync
+</code></pre>
+<p>需要注意的点：</p>
+<ul>
+<li>分清u盘及其对应的分区</li>
+</ul>
+<p>若u盘设备为/dev/sdc，若它有两个子分区，则分别表示为/dev/sdc1、/dev/sdc2。</p>
+<ul>
+<li>弹出u盘，格式化u盘以及写入数据时，不对子分区进行操作。</li>
+</ul>
+<h1 id="mac">Mac</h1>
+<pre><code class="language-shell"># 将iso镜像转化为dmg镜像
+hdiutil convert -format UDRW -o xxx.dmg xxx.iso
+
+# 显示挂载设备
+diskutil list
+
+# 格式化挂载的设备
+sudo diskutil eraseDisk FAT32 usb_name MBRFormat /dev/disk2
+# 若上一方式不成功可试用如下方式
+# sudo diskutil partitionDisk /dev/disk2 1 MBRFormat &quot;MS-DOS FAT32&quot; EDISON 32GB
+
+# 弹出设备
+diskutil umountDisk /dev/disk1
+
+# 将dmg镜像数据写入设备
+sudo dd if=xxx.dmg of=/dev/rdisk1 bs=4m
+
+# 数据写入完成后，系统会自动挂载，此时弹出设备即可
+diskutil eject /dev/disk1
+</code></pre>
+<ul>
+<li>Mac中u盘的分区</li>
+</ul>
+<p>若/dev/disk2为挂载的u盘，则/dev/disk2s1、/dev/disk2s2分别为两个子分区</p>
 
                 </div>
             </article>
@@ -135,8 +147,8 @@ fatiando</p>
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://robinzzs.github.io/post/latex-bian-ji-qi/" class="post-title gt-a-link">
-                    Latex编辑器
+                <a href="https://robinzzs.github.io/post/github-zhong-gao-xiao-sou-suo-xiang-mu/" class="post-title gt-a-link">
+                    Github 中高效搜索项目
                 </a>
             </div>
         

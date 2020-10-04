@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Geo Software | Robin&#39;s Blog</title>
+<title>Fedora编译安装lsp-python-ms | Robin&#39;s Blog</title>
 <link rel="shortcut icon" href="https://robinzzs.github.io/favicon.ico?v=1601800532007">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://robinzzs.github.io/styles/main.css">
@@ -87,46 +87,46 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Geo Software
+                    Fedora编译安装lsp-python-ms
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-06-23 ·
+                        · 2020-07-12 ·
                     </time>
-                    
-                        <a href="https://robinzzs.github.io/tag/opHOJ7Frk/" class="post-tags">
-                            # Geophysic
-                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <p>SEIZMO<br>
-SAC<br>
-SEISAN<br>
-GISMO<br>
-RSEIS<br>
-CORAL<br>
-SPLITLAB<br>
-SeismicHandler<br>
-TTBOX &amp; LOCSMITH<br>
-M_MAP<br>
-MATTAUP<br>
-SHTOOLS<br>
-STK<br>
-SEISLAB<br>
-MATSEIS<br>
-SEISMON<br>
-SPICE Software<br>
-CIG Software<br>
-IRIS Software<br>
-PASSCAL Software<br>
-USC Software<br>
-TauP<br>
-MADAGASCAR<br>
-SEISMIC UNIX<br>
-SACLAB<br>
-MacSAC<br>
-fatiando</p>
+                    <p>在Fedora中，利用之前在Mac中做好配置的Doom Emacs进行文字和代码编辑。对Python脚本进行编辑时，<br>
+使用MS的python-language-server作为后端，进行Python的语法补全等。</p>
+<h1 id="安装dotnet-sdk">安装dotnet-sdk</h1>
+<p>根据相关文档的说明目前Fedora32的默认包存储库中提供dotnet的支持，而Fedora31则需要使用Microsoft的包存储库。</p>
+<pre><code class="language-shell">sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo wget -O /etc/yum.repos.d/microsoft-prod.repo https://packages.microsoft.com/config/fedora/31/prod.repo
+</code></pre>
+<p>安装SDK</p>
+<pre><code class="language-shell">sudo dnf install dotnet-sdk-3.1
+
+# 安装运行时
+# sudo dnf install aspnetcore-runtime-3.1
+</code></pre>
+<p>或可考虑通过脚本安装，<a href="https://dot.net/v1/dotnet-install.sh">https://dot.net/v1/dotnet-install.sh</a>可下载相应的安装脚本</p>
+<p>参考<a href="https://docs.microsoft.com/zh-cn/dotnet/core/install/linux-fedora">https://docs.microsoft.com/zh-cn/dotnet/core/install/linux-fedora</a></p>
+<h1 id="克隆并编译python-language-server">克隆并编译python-language-server</h1>
+<pre><code class="language-shell">git clone https://github.com/Microsoft/python-language-server.git
+cd python-language-server/src/LanguageServer/Impl
+dotnet publish -c Release -r linux-x64 
+# CentOS, Debian, Fedora, Ubuntu, and derivatives
+</code></pre>
+<p>-r标志对应不同的操作系统和发行版本，可以通过相关文档查找对应的Runtime ID（RID）。<br>
+<a href="https://docs.microsoft.com/en-us/dotnet/core/rid-catalog">https://docs.microsoft.com/en-us/dotnet/core/rid-catalog</a></p>
+<p>将输出文件变为可执行的二进制文件</p>
+<pre><code class="language-shell">chmod a+x $(git rev-parse --show-toplevel)/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer
+</code></pre>
+<h1 id="在doom-emacs中添加相关配置">在Doom Emacs中添加相关配置</h1>
+<pre><code class="language-lisp"># 如果没有将可执行文件加入到PATH中，则需要指定相应的路径
+(setq lsp-python-ms-executable
+      &quot;/Path/To/python-language-server/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer&quot;)
+</code></pre>
 
                 </div>
             </article>
@@ -135,8 +135,8 @@ fatiando</p>
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://robinzzs.github.io/post/latex-bian-ji-qi/" class="post-title gt-a-link">
-                    Latex编辑器
+                <a href="https://robinzzs.github.io/post/fedora-an-zhuang-ffmpeg-bao/" class="post-title gt-a-link">
+                    Fedora安装FFmpeg包
                 </a>
             </div>
         

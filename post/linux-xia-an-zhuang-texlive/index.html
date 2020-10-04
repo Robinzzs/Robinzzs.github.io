@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Geo Software | Robin&#39;s Blog</title>
+<title>Linux下安装TexLive | Robin&#39;s Blog</title>
 <link rel="shortcut icon" href="https://robinzzs.github.io/favicon.ico?v=1601800532007">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://robinzzs.github.io/styles/main.css">
@@ -87,46 +87,40 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Geo Software
+                    Linux下安装TexLive
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-06-23 ·
+                        · 2020-07-23 ·
                     </time>
-                    
-                        <a href="https://robinzzs.github.io/tag/opHOJ7Frk/" class="post-tags">
-                            # Geophysic
-                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <p>SEIZMO<br>
-SAC<br>
-SEISAN<br>
-GISMO<br>
-RSEIS<br>
-CORAL<br>
-SPLITLAB<br>
-SeismicHandler<br>
-TTBOX &amp; LOCSMITH<br>
-M_MAP<br>
-MATTAUP<br>
-SHTOOLS<br>
-STK<br>
-SEISLAB<br>
-MATSEIS<br>
-SEISMON<br>
-SPICE Software<br>
-CIG Software<br>
-IRIS Software<br>
-PASSCAL Software<br>
-USC Software<br>
-TauP<br>
-MADAGASCAR<br>
-SEISMIC UNIX<br>
-SACLAB<br>
-MacSAC<br>
-fatiando</p>
+                    <p>不少Linux的发行版中，包管理工具中的texlive版本较低或缺少相关文件等等，如Centos、Fedora。<br>
+下面介绍通过下载texlive的完整镜像，来安装texlive。</p>
+<h1 id="下载">下载</h1>
+<p>推荐使用阿里云镜像源，比清华镜像源更稳定。<a href="https://mirrors.aliyun.com/CTAN/">https://mirrors.aliyun.com/CTAN/</a><br>
+下载地址：<a href="https://mirrors.aliyun.com/CTAN/systems/texlive/Images/texlive.iso">https://mirrors.aliyun.com/CTAN/systems/texlive/Images/texlive.iso</a></p>
+<h1 id="安装">安装</h1>
+<p>将下载的镜像挂载，并执行安装程序即可。若/mnt目录下已有文件，则可以</p>
+<pre><code class="language-shell">sudo mkdir /mnt/textmp
+sudo mount -o loop texlive.iso /mnt/textmp
+cd /mnt/textmp
+sudo ./install-tl -gui
+</code></pre>
+<h1 id="更新">更新</h1>
+<p>配置镜像源</p>
+<pre><code class="language-shell">tlmgr option repository https://mirrors.aliyun.com/CTAN/systems/texlive/tlnet
+</code></pre>
+<p>先更新管理器tlmgr，然后更新包</p>
+<pre><code class="language-shell">sudo tlmgr update --self
+sudo tlmgr update --all
+</code></pre>
+<h1 id="屏蔽系统自带包管理器安装或更改texlive">屏蔽系统自带包管理器安装或更改texlive</h1>
+<p>以Fedora为例：</p>
+<pre><code class="language-shell">cd /etc/dnf
+sudo echo exclude=texlive* &gt;&gt; dnf.conf
+</code></pre>
 
                 </div>
             </article>
@@ -135,8 +129,8 @@ fatiando</p>
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://robinzzs.github.io/post/latex-bian-ji-qi/" class="post-title gt-a-link">
-                    Latex编辑器
+                <a href="https://robinzzs.github.io/post/wavelet-transform/" class="post-title gt-a-link">
+                    Wavelet Transform
                 </a>
             </div>
         

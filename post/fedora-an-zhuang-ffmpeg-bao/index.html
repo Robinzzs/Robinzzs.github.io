@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Geo Software | Robin&#39;s Blog</title>
+<title>Fedora安装FFmpeg包 | Robin&#39;s Blog</title>
 <link rel="shortcut icon" href="https://robinzzs.github.io/favicon.ico?v=1601800532007">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://robinzzs.github.io/styles/main.css">
@@ -87,46 +87,31 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Geo Software
+                    Fedora安装FFmpeg包
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-06-23 ·
+                        · 2020-07-12 ·
                     </time>
-                    
-                        <a href="https://robinzzs.github.io/tag/opHOJ7Frk/" class="post-tags">
-                            # Geophysic
-                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <p>SEIZMO<br>
-SAC<br>
-SEISAN<br>
-GISMO<br>
-RSEIS<br>
-CORAL<br>
-SPLITLAB<br>
-SeismicHandler<br>
-TTBOX &amp; LOCSMITH<br>
-M_MAP<br>
-MATTAUP<br>
-SHTOOLS<br>
-STK<br>
-SEISLAB<br>
-MATSEIS<br>
-SEISMON<br>
-SPICE Software<br>
-CIG Software<br>
-IRIS Software<br>
-PASSCAL Software<br>
-USC Software<br>
-TauP<br>
-MADAGASCAR<br>
-SEISMIC UNIX<br>
-SACLAB<br>
-MacSAC<br>
-fatiando</p>
+                    <p>由于在基本的存储库中缺少对FFmpeg包的支持，需要进行如下配置。</p>
+<h1 id="配置rpmfusion-yum存储库">配置RPMfusion Yum存储库</h1>
+<p>FFmpeg包在RPMfusion存储库中可用，将源添加到Fedora系统中：</p>
+<pre><code class="language-shell"># free
+sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+
+# nonfree
+sudo dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+</code></pre>
+<h1 id="安装ffmpeg">安装FFmpeg</h1>
+<p>添加存储库后，运行以下命令安装</p>
+<pre><code class="language-shell">sudo dnf -y install ffmpeg
+
+# 安装开发库
+sudo dnf -y install ffmpeg-devel
+</code></pre>
 
                 </div>
             </article>
@@ -135,8 +120,8 @@ fatiando</p>
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://robinzzs.github.io/post/latex-bian-ji-qi/" class="post-title gt-a-link">
-                    Latex编辑器
+                <a href="https://robinzzs.github.io/post/linuxmac-xia-shi-yong-u-pan-zhi-zuo-an-zhuang-jing-xiang/" class="post-title gt-a-link">
+                    Linux/Mac下使用U盘制作安装镜像
                 </a>
             </div>
         
